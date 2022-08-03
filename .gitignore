@@ -1,0 +1,11 @@
+*/**/.a
+*/**/.o
+*/**/.out
+
+.vscode
+so_long
+*.a
+*.o
+*.out
+
+.DS_Store
