@@ -15,6 +15,7 @@ all: $(NAME)
 
 clean:
 	rm -f $(OBJ)
+	cd mlx && make clean
 
 fclean: clean
 	rm -rf $(NAME)

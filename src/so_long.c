@@ -1,4 +1,4 @@
-#include <mlx.h>
+#include "so_long.h"
 #include <stdio.h>
 
 typedef struct s_vars
