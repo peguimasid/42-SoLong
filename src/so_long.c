@@ -1,66 +1,27 @@
 #include <mlx.h>
+#include <stdio.h>
 
-typedef struct s_data
+typedef struct s_vars
 {
-	void	*img;
-	char	*addr;
-	int		bits_per_pixel;
-	int		line_length;
-	int		endian;
-}			t_data;
+	void	*mlx;
+	void	*win;
+}			t_vars;
 
-void	my_mlx_pixel_put(t_data *data, int x, int y, int color)
+int	handle_keypress(int keycode, t_vars *vars)
 {
-	char	*dst;
-
-	dst = data->addr + (y * data->line_length + x * (data->bits_per_pixel / 8));
-	*(unsigned int *)dst = color;
-}
-
-void	build_square(t_data img)
-{
-	int	i;
-	int	j;
-	int	mask;
-
-	i = 0;
-	j = 0;
-	mask = 225;
-	while (i < 100)
-	{
-		my_mlx_pixel_put(&img, i + mask, j + mask, 0xFF0000);
-		i++;
-	}
-	while (j < 100)
-	{
-		my_mlx_pixel_put(&img, i + mask, j + mask, 0xFFFF00);
-		j++;
-	}
-	while (i >= 0)
-	{
-		my_mlx_pixel_put(&img, i + mask, j + mask, 0x00FF00);
-		i--;
-	}
-	while (j >= 0)
-	{
-		my_mlx_pixel_put(&img, i + mask, j + mask, 0x00FF);
-		j--;
-	}
+	printf("<%d>", keycode);
+	if (keycode == 53)
+		mlx_destroy_window(vars->mlx, vars->win);
+	return (0);
 }
 
 int	main(void)
 {
-	void	*mlx;
-	void	*mlx_window;
-	t_data	img;
+	t_vars	vars;
 
-	mlx = mlx_init();
-	mlx_window = mlx_new_window(mlx, 900, 500, "Hello world!");
-	img.img = mlx_new_image(mlx, 900, 500);
-	img.addr = mlx_get_data_addr(img.img, &img.bits_per_pixel, &img.line_length,
-			&img.endian);
-	build_square(img);
-	mlx_put_image_to_window(mlx, mlx_window, img.img, 0, 0);
-	mlx_loop(mlx);
+	vars.mlx = mlx_init();
+	vars.win = mlx_new_window(vars.mlx, 900, 500, "Hello world!");
+	mlx_hook(vars.win, 2, 1L << 0, handle_keypress, &vars);
+	mlx_loop(vars.mlx);
 	return (0);
 }
