@@ -4,8 +4,9 @@
 # define SO_LONG_H
 
 # include "../mlx/mlx.h"
+# include <stdlib.h>
 
-enum e_keycode
+enum	e_keycode
 {
 	KEY_UP = 13,
 	KEY_DOWN = 1,
