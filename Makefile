@@ -9,13 +9,13 @@ OBJ	= $(SRCS:.c=.o)
 	$(CC) -Wall -Wextra -Werror -Imlx -c $< -o $@
 
 $(NAME): $(OBJ)
-	cd mlx && make -s
+	make -s -C mlx
 	$(CC) $(OBJ) -Lmlx -lmlx -framework OpenGL -framework AppKit -o $(NAME)
 
 all: $(NAME)
 
 clean:
-	cd mlx && make -s clean
+	make clean -s -C mlx
 	rm -f $(OBJ)
 
 fclean: clean
