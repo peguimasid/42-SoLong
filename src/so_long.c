@@ -1,25 +1,19 @@
 #include "so_long.h"
 #include <stdio.h>
 
-typedef struct s_vars
-{
-	void	*mlx;
-	void	*win;
-}			t_vars;
-
-int	handle_keypress(int keycode, t_vars *vars)
-{
-	printf("<%d>", keycode);
-	if (keycode == 53)
-		mlx_destroy_window(vars->mlx, vars->win);
-	return (0);
-}
-
-int	close_game(t_vars *game)
+int	close_game(t_game *game)
 {
 	mlx_destroy_window(game->mlx, game->win);
 	free(game->mlx);
 	exit(0);
+	return (0);
+}
+
+int	handle_keypress(int keycode, t_game *game)
+{
+	printf("<%d>", keycode);
+	if (keycode == 53)
+		close_game(game);
 	return (0);
 }
 
@@ -32,13 +26,13 @@ int	mouse_event(int button)
 
 int	main(void)
 {
-	t_vars	vars;
+	t_game	game;
 
-	vars.mlx = mlx_init();
-	vars.win = mlx_new_window(vars.mlx, 900, 500, "Hello world!");
-	mlx_hook(vars.win, 2, 1L << 0, handle_keypress, &vars);
-	mlx_hook(vars.win, 17, 1L << 2, close_game, &vars);
-	mlx_mouse_hook(vars.win, mouse_event, 0);
-	mlx_loop(vars.mlx);
+	game.mlx = mlx_init();
+	game.win = mlx_new_window(game.mlx, 900, 500, "Hello world!");
+	mlx_hook(game.win, E_KEYPRESS, 1L << 0, handle_keypress, &game);
+	mlx_hook(game.win, E_CLOSE_GAME, 1L << 2, close_game, &game);
+	mlx_mouse_hook(game.win, mouse_event, 0);
+	mlx_loop(game.mlx);
 	return (0);
 }

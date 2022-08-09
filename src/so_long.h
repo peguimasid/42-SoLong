@@ -7,7 +7,13 @@
 # include "../mlx/mlx.h"
 # include <stdlib.h>
 
-enum	e_keycode
+typedef struct s_game
+{
+	void	*mlx;
+	void	*win;
+}			t_game;
+
+enum		e_keycode
 {
 	KEY_UP = 13,
 	KEY_DOWN = 1,
@@ -15,6 +21,12 @@ enum	e_keycode
 	KEY_RIGHT = 2,
 	RESET = 15,
 	ESC = 53
+};
+
+enum		e_eventcode
+{
+	E_KEYPRESS = 2,
+	E_CLOSE_GAME = 17
 };
 
 #endif
