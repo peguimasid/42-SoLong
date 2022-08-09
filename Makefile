@@ -1,7 +1,8 @@
 NAME=so_long
 CC=cc
 
-SRCS	= src/so_long.c	\
+SRCS	= src/so_long.c
+LIBFT = libft/libft.a
 
 OBJ	= $(SRCS:.c=.o)
 
@@ -10,12 +11,14 @@ OBJ	= $(SRCS:.c=.o)
 
 $(NAME): $(OBJ)
 	make -s -C mlx
-	$(CC) $(OBJ) -Lmlx -lmlx -framework OpenGL -framework AppKit -o $(NAME)
+	make -s -C libft
+	$(CC) $(OBJ) -Lmlx -lmlx -framework OpenGL -framework AppKit -o $(NAME) $(LIBFT)
 
 all: $(NAME)
 
 clean:
 	make clean -s -C mlx
+	make clean -s -C libft
 	rm -f $(OBJ)
 
 fclean: clean
