@@ -6,7 +6,7 @@
 /*   By: gmasid <gmasid@student.42.rio>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/10 14:35:12 by gmasid            #+#    #+#             */
-/*   Updated: 2022/08/10 15:04:12 by gmasid           ###   ########.fr       */
+/*   Updated: 2022/08/10 15:25:45 by gmasid           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,8 +15,7 @@
 
 int	handle_keypress(int keycode, t_game *game)
 {
-	printf("<%d>", keycode);
-	if (keycode == 53)
+	if (keycode == ESC)
 		close_game(game);
 	if (keycode == KEY_UP)
 	{
