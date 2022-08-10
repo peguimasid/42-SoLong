@@ -21,21 +21,60 @@ void	put_img(int x, int y, t_game *game, void *img)
 	mlx_put_image_to_window(game->mlx, game->win, img, x, y);
 }
 
-int	init_img(t_game *game)
+int	init_game(t_game *game)
 {
 	game->person = load_img(game, PERSON);
 	game->floor = load_img(game, FLOOR);
-	game->x_pos = 0;
-	game->y_pos = 0;
-	for (int i = 0; i < 28; i++)
+	game->wall = load_img(game, WALL);
+	game->x_pos = 1;
+	game->y_pos = 1;
+	return (0);
+}
+
+void	print_map(t_game *game)
+{
+	int	i;
+	int	j;
+
+	i = 0;
+	j = 0;
+	while (j < 16)
 	{
-		for (int j = 0; j < 16; j++)
+		put_img(i * 32, j * 32, game, game->wall);
+		j++;
+	}
+	j = 0;
+	while (i < 28)
+	{
+		put_img(i * 32, j * 32, game, game->wall);
+		i++;
+	}
+	i = 27;
+	while (j < 16)
+	{
+		put_img(i * 32, j * 32, game, game->wall);
+		j++;
+	}
+	j = 15;
+	i = 0;
+	while (i < 28)
+	{
+		put_img(i * 32, j * 32, game, game->wall);
+		i++;
+	}
+	i = 1;
+	j = 1;
+	while (i < 27)
+	{
+		j = 1;
+		while (j < 15)
 		{
 			put_img(i * 32, j * 32, game, game->floor);
+			j++;
 		}
+		i++;
 	}
 	put_img(game->x_pos * 32, game->y_pos * 32, game, game->person);
-	return (0);
 }
 
 int	close_game(t_game *game)
@@ -46,58 +85,16 @@ int	close_game(t_game *game)
 	return (0);
 }
 
-int	handle_keypress(int keycode, t_game *game)
-{
-	printf("<%d>", keycode);
-	if (keycode == 53)
-		close_game(game);
-	if (keycode == KEY_UP)
-	{
-		put_img(game->x_pos * 32, game->y_pos * 32, game, game->floor);
-		if (game->y_pos > 0)
-			game->y_pos--;
-		put_img(game->x_pos * 32, game->y_pos * 32, game, game->person);
-	}
-	if (keycode == KEY_DOWN)
-	{
-		put_img(game->x_pos * 32, game->y_pos * 32, game, game->floor);
-		if (game->y_pos < 15)
-			game->y_pos++;
-		put_img(game->x_pos * 32, game->y_pos * 32, game, game->person);
-	}
-	if (keycode == KEY_LEFT)
-	{
-		put_img(game->x_pos * 32, game->y_pos * 32, game, game->floor);
-		if (game->x_pos > 0)
-			game->x_pos--;
-		put_img(game->x_pos * 32, game->y_pos * 32, game, game->person);
-	}
-	if (keycode == KEY_RIGHT)
-	{
-		put_img(game->x_pos * 32, game->y_pos * 32, game, game->floor);
-		if (game->x_pos < 27)
-			game->x_pos++;
-		put_img(game->x_pos * 32, game->y_pos * 32, game, game->person);
-	}
-	return (0);
-}
-
-int	mouse_event(int button)
-{
-	ft_putnbr_fd(button, 1);
-	return (0);
-}
-
 int	main(void)
 {
 	t_game	game;
 
 	game.mlx = mlx_init();
-	game.win = mlx_new_window(game.mlx, 895, 510, "Hello world!");
+	game.win = mlx_new_window(game.mlx, 895, 510, "so_long");
 	mlx_hook(game.win, E_KEYPRESS, 1L << 0, handle_keypress, &game);
 	mlx_hook(game.win, E_CLOSE_GAME, 1L << 2, close_game, &game);
-	mlx_mouse_hook(game.win, mouse_event, 0);
-	init_img(&game);
+	init_game(&game);
+	print_map(&game);
 	mlx_loop(game.mlx);
 	return (0);
 }

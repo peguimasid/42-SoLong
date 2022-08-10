@@ -1,7 +1,8 @@
 NAME=so_long
 CC=cc
 
-SRCS	= src/so_long.c
+SRCS	= src/so_long.c \
+				src/handle_keypress.c
 LIBFT = libft/libft.a
 
 OBJ	= $(SRCS:.c=.o)
