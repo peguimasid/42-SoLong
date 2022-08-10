@@ -7,10 +7,13 @@
 # include "../mlx/mlx.h"
 # include <stdlib.h>
 
+# define PERSON "./img/person_a.xpm"
+
 typedef struct s_game
 {
 	void	*mlx;
 	void	*win;
+	void	*person;
 }			t_game;
 
 enum		e_keycode
