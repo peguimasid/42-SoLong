@@ -92,7 +92,7 @@ int	main(void)
 	game.mlx = mlx_init();
 	game.win = mlx_new_window(game.mlx, 895, 510, "so_long");
 	mlx_hook(game.win, E_KEYPRESS, 1L << 0, handle_keypress, &game);
-	mlx_hook(game.win, E_CLOSE_GAME, 1L << 2, close_game, &game);
+	mlx_hook(game.win, E_CLOSE_WINDOW, 1L << 2, close_game, &game);
 	init_game(&game);
 	print_map(&game);
 	mlx_loop(game.mlx);

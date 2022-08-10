@@ -35,7 +35,7 @@ enum		e_keycode
 enum		e_eventcode
 {
 	E_KEYPRESS = 2,
-	E_CLOSE_GAME = 17
+	E_CLOSE_WINDOW = 17
 };
 
 int			handle_keypress(int keycode, t_game *game);
