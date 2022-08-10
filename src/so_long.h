@@ -8,12 +8,16 @@
 # include <stdlib.h>
 
 # define PERSON "./img/person_a.xpm"
+# define FLOOR "./img/dirt.xpm"
 
 typedef struct s_game
 {
 	void	*mlx;
 	void	*win;
 	void	*person;
+	void	*floor;
+	int		x_pos;
+	int		y_pos;
 }			t_game;
 
 enum		e_keycode
