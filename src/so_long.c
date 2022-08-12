@@ -21,16 +21,21 @@ void	put_img(int x, int y, t_game *game, void *img)
 	mlx_put_image_to_window(game->mlx, game->win, img, x, y);
 }
 
+// TODO: Get num of rows and cols dinamically when generating map
 int	init_game(t_game *game)
 {
 	game->person = load_img(game, PERSON);
 	game->floor = load_img(game, FLOOR);
 	game->wall = load_img(game, WALL);
+	game->coin = load_img(game, COIN);
+	game->map_num_cols = 28;
+	game->map_num_rows = 16;
 	game->x_pos = 1;
 	game->y_pos = 1;
 	return (0);
 }
 
+// TODO: Make function to get map send as param and build it
 void	print_map(t_game *game)
 {
 	int	i;
@@ -44,27 +49,28 @@ void	print_map(t_game *game)
 		j++;
 	}
 	j = 0;
-	while (i < 28)
+	while (i < game->map_num_cols)
 	{
-		put_img(i * 32, j * 32, game, game->wall);
+		if (i)
+			put_img(i * 32, j * 32, game, game->wall);
 		i++;
 	}
 	i = 27;
-	while (j < 16)
+	while (j < game->map_num_rows)
 	{
 		put_img(i * 32, j * 32, game, game->wall);
 		j++;
 	}
 	j = 15;
 	i = 0;
-	while (i < 28)
+	while (i < game->map_num_cols)
 	{
 		put_img(i * 32, j * 32, game, game->wall);
 		i++;
 	}
 	i = 1;
 	j = 1;
-	while (i < 27)
+	while (i < game->map_num_cols - 1)
 	{
 		j = 1;
 		while (j < 15)
@@ -90,7 +96,7 @@ int	main(void)
 	t_game	game;
 
 	game.mlx = mlx_init();
-	game.win = mlx_new_window(game.mlx, 895, 510, "so_long");
+	game.win = mlx_new_window(game.mlx, 28 * 32, 16 * 32, "so_long");
 	mlx_hook(game.win, E_KEYPRESS, 1L << 0, handle_keypress, &game);
 	mlx_hook(game.win, E_CLOSE_WINDOW, 1L << 2, close_game, &game);
 	init_game(&game);

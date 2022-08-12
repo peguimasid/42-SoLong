@@ -10,6 +10,7 @@
 # define PERSON "./img/person_a.xpm"
 # define FLOOR "./img/dirt.xpm"
 # define WALL "./img/wall.xpm"
+# define COIN "./img/coin.xpm"
 
 typedef struct s_game
 {
@@ -18,6 +19,9 @@ typedef struct s_game
 	void	*person;
 	void	*floor;
 	void	*wall;
+	void	*coin;
+	int		map_num_cols;
+	int		map_num_rows;
 	int		x_pos;
 	int		y_pos;
 }			t_game;
