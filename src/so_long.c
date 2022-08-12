@@ -51,8 +51,7 @@ void	print_map(t_game *game)
 	j = 0;
 	while (i < game->map_num_cols)
 	{
-		if (i)
-			put_img(i * 32, j * 32, game, game->wall);
+		put_img(i * 32, j * 32, game, game->wall);
 		i++;
 	}
 	i = 27;
@@ -94,7 +93,10 @@ int	close_game(t_game *game)
 int	main(void)
 {
 	t_game	game;
+	int		fd;
 
+	fd = open("maps/map1.ber", O_RDONLY);
+	printf("%s", get_next_line(fd));
 	game.mlx = mlx_init();
 	game.win = mlx_new_window(game.mlx, 28 * 32, 16 * 32, "so_long");
 	mlx_hook(game.win, E_KEYPRESS, 1L << 0, handle_keypress, &game);

@@ -2,7 +2,9 @@ NAME=so_long
 CC=cc
 
 SRCS	= src/so_long.c \
-				src/handle_keypress.c
+				src/handle_keypress.c	\
+				get_next_line/get_next_line.c	\
+				get_next_line/get_next_line_utils.c
 LIBFT = libft/libft.a
 
 OBJ	= $(SRCS:.c=.o)
