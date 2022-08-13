@@ -25,33 +25,32 @@ void	put_img(int x, int y, t_game *game, void *img)
 int	init_game(t_game *game)
 {
 	game->mlx = mlx_init();
-	game->win = mlx_new_window(game->mlx, 13 * 32, 5 * 32, "so_long");
+	game->win = mlx_new_window(game->mlx, game->map_num_cols,
+			game->map_num_rows, "so_long");
 	game->person = load_img(game, PERSON);
 	game->floor = load_img(game, FLOOR);
 	game->wall = load_img(game, WALL);
 	game->coin = load_img(game, COIN);
 	game->exit = load_img(game, EXIT);
-	game->map_num_cols = 13;
-	game->map_num_rows = 5;
 	return (0);
 }
 
 static void	print_map_aux(t_game *game, int x, int y)
 {
 	if (game->map[x][y] == '1')
-		put_img(y * 32, x * 32, game, game->wall);
+		put_img(y * SPRITE_SIZE, x * SPRITE_SIZE, game, game->wall);
 	if (game->map[x][y] == '0')
-		put_img(y * 32, x * 32, game, game->floor);
+		put_img(y * SPRITE_SIZE, x * SPRITE_SIZE, game, game->floor);
 	if (game->map[x][y] == 'P')
 	{
-		game->x_pos = x;
-		game->y_pos = y;
-		put_img(y * 32, x * 32, game, game->person);
+		game->player.x_pos = x;
+		game->player.y_pos = y;
+		put_img(y * SPRITE_SIZE, x * SPRITE_SIZE, game, game->person);
 	}
 	if (game->map[x][y] == 'E')
-		put_img(y * 32, x * 32, game, game->exit);
+		put_img(y * SPRITE_SIZE, x * SPRITE_SIZE, game, game->exit);
 	if (game->map[x][y] == 'C')
-		put_img(y * 32, x * 32, game, game->coin);
+		put_img(y * SPRITE_SIZE, x * SPRITE_SIZE, game, game->coin);
 }
 
 int	print_map(t_game *game)
@@ -95,7 +94,7 @@ int	main(int argc, char **argv)
 
 	if (argc != 2)
 		return (print_usage());
-	game.map = generate_map(argv[1]);
+	game.map = generate_map(&game, argv[1]);
 	if (!game.map)
 		return (0);
 	init_game(&game);

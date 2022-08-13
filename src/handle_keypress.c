@@ -6,7 +6,7 @@
 /*   By: gmasid <gmasid@student.42.rio>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/10 14:35:12 by gmasid            #+#    #+#             */
-/*   Updated: 2022/08/13 16:30:36 by gmasid           ###   ########.fr       */
+/*   Updated: 2022/08/13 17:12:53 by gmasid           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,12 +15,13 @@
 
 int	handle_keypress(int keycode, t_game *game)
 {
-	int px = game->x_pos;
-	int py = game->y_pos;
+	int	px;
+	int	py;
 
+	px = game->player.x_pos;
+	py = game->player.y_pos;
 	if (keycode == ESC)
 		close_game(game);
-	ft_printf("%d %d\n", game->x_pos, game->y_pos);
 	if (keycode == KEY_UP)
 	{
 		game->map[px][py] = '0';
