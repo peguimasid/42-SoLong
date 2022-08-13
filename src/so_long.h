@@ -6,7 +6,7 @@
 /*   By: gmasid <gmasid@student.42.rio>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/13 17:13:18 by gmasid            #+#    #+#             */
-/*   Updated: 2022/08/13 17:35:30 by gmasid           ###   ########.fr       */
+/*   Updated: 2022/08/13 17:38:57 by gmasid           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,10 +66,12 @@ enum			e_eventcode
 };
 
 int				handle_keypress(int keycode, t_game *game);
-void			put_img(int x, int y, t_game *game, void *img);
 int				close_game(t_game *game);
-char			**generate_map(t_game *game, char *path);
-void			put_img(int x, int y, t_game *game, void *img);
 int				print_map(t_game *game);
+
+void			put_img(int x, int y, t_game *game, void *img);
+void			put_img(int x, int y, t_game *game, void *img);
+
+char			**generate_map(t_game *game, char *path);
 
 #endif
