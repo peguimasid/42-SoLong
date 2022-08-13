@@ -6,11 +6,11 @@
 /*   By: gmasid <gmasid@student.42.rio>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/30 11:06:30 by gmasid            #+#    #+#             */
-/*   Updated: 2022/08/12 16:56:47 by gmasid           ###   ########.fr       */
+/*   Updated: 2022/08/13 14:21:47 by gmasid           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/get_next_line.h"
+#include "get_next_line.h"
 
 size_t	gnl_strlen(char *s)
 {

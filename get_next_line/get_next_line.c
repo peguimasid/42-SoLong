@@ -6,11 +6,11 @@
 /*   By: gmasid <gmasid@student.42.rio>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/29 15:13:17 by gmasid            #+#    #+#             */
-/*   Updated: 2022/08/12 16:57:22 by gmasid           ###   ########.fr       */
+/*   Updated: 2022/08/13 14:21:42 by gmasid           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/get_next_line.h"
+#include "get_next_line.h"
 
 char	*read_file_until_find_next_line(int fd, char *work_str)
 {
