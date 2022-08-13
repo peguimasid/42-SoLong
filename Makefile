@@ -1,10 +1,11 @@
 NAME=so_long
 CC=cc
 
-SRCS	= src/so_long.c \
+SRCS	= get_next_line/get_next_line.c	\
+				get_next_line/get_next_line_utils.c	\
+				src/so_long.c \
 				src/handle_keypress.c	\
-				get_next_line/get_next_line.c	\
-				get_next_line/get_next_line_utils.c
+				src/generate_map.c
 LIBFTPRINTF = ft_printf/libftprintf.a
 
 OBJ	= $(SRCS:.c=.o)

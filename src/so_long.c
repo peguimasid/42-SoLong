@@ -10,7 +10,7 @@ void	*load_img(t_game *game, char *path)
 	img = mlx_xpm_file_to_image(game->mlx, path, &x, &y);
 	if (img == NULL)
 	{
-		printf("Error\nImage not found\n");
+		ft_printf("Error\nImage not found\n");
 		exit(1);
 	}
 	return (img);
@@ -28,58 +28,47 @@ int	init_game(t_game *game)
 	game->floor = load_img(game, FLOOR);
 	game->wall = load_img(game, WALL);
 	game->coin = load_img(game, COIN);
-	game->map_num_cols = 28;
-	game->map_num_rows = 16;
-	game->x_pos = 1;
-	game->y_pos = 1;
+	game->exit = load_img(game, EXIT);
+	game->map_num_cols = 13;
+	game->map_num_rows = 5;
 	return (0);
 }
 
-// TODO: Make function to get map send as param and build it
-void	print_map(t_game *game)
+static void	print_map_aux(t_game *game, int x, int y)
+{
+	if (game->map[x][y] == '1')
+		put_img(y * 32, x * 32, game, game->wall);
+	if (game->map[x][y] == '0')
+		put_img(y * 32, x * 32, game, game->floor);
+	if (game->map[x][y] == 'P')
+	{
+		game->x_pos = x;
+		game->y_pos = y;
+		put_img(y * 32, x * 32, game, game->person);
+	}
+	if (game->map[x][y] == 'E')
+		put_img(y * 32, x * 32, game, game->exit);
+	if (game->map[x][y] == 'C')
+		put_img(y * 32, x * 32, game, game->coin);
+}
+
+int	print_map(t_game *game)
 {
 	int	i;
 	int	j;
 
 	i = 0;
-	j = 0;
-	while (j < 16)
+	while (game->map[i])
 	{
-		put_img(i * 32, j * 32, game, game->wall);
-		j++;
-	}
-	j = 0;
-	while (i < game->map_num_cols)
-	{
-		put_img(i * 32, j * 32, game, game->wall);
-		i++;
-	}
-	i = 27;
-	while (j < game->map_num_rows)
-	{
-		put_img(i * 32, j * 32, game, game->wall);
-		j++;
-	}
-	j = 15;
-	i = 0;
-	while (i < game->map_num_cols)
-	{
-		put_img(i * 32, j * 32, game, game->wall);
-		i++;
-	}
-	i = 1;
-	j = 1;
-	while (i < game->map_num_cols - 1)
-	{
-		j = 1;
-		while (j < 15)
+		j = 0;
+		while (game->map[i][j])
 		{
-			put_img(i * 32, j * 32, game, game->floor);
+			print_map_aux(game, i, j);
 			j++;
 		}
 		i++;
 	}
-	put_img(game->x_pos * 32, game->y_pos * 32, game, game->person);
+	return (0);
 }
 
 int	close_game(t_game *game)
@@ -93,19 +82,23 @@ int	close_game(t_game *game)
 int	main(int argc, char **argv)
 {
 	t_game	game;
-	int		fd;
 
 	if (argc != 2)
 	{
-		ft_printf("Passa o bagulho certo ai %s", argv[0]);
+		ft_printf("\033[0;31m\n");
+		ft_printf("Error\nUsage: ./so_long maps/<map>.ber\n");
+		ft_printf("\033[0m");
 		return (1);
 	}
-	fd = open("maps/map1.ber", O_RDONLY);
-	printf("%s", get_next_line(fd));
+	game.map = generate_map(argv[1]);
+	if (!game.map)
+		return (0);
 	game.mlx = mlx_init();
-	game.win = mlx_new_window(game.mlx, 28 * 32, 16 * 32, "so_long");
+	game.win = mlx_new_window(game.mlx, 13 * 32, 5 * 32, "so_long");
 	mlx_hook(game.win, E_KEYPRESS, 1L << 0, handle_keypress, &game);
 	mlx_hook(game.win, E_CLOSE_WINDOW, 1L << 2, close_game, &game);
+	mlx_hook(game.win, 9, 1L << 21, &print_map, &game);
+	mlx_loop_hook(game.mlx, &print_map, &game);
 	init_game(&game);
 	print_map(&game);
 	mlx_loop(game.mlx);

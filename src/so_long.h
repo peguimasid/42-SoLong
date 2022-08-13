@@ -13,6 +13,9 @@
 # define FLOOR "./img/dirt.xpm"
 # define WALL "./img/wall.xpm"
 # define COIN "./img/coin.xpm"
+# define EXIT "./img/exit.xpm"
+
+# define SPRITE_SIZE 32;
 
 typedef struct s_game
 {
@@ -22,6 +25,8 @@ typedef struct s_game
 	void	*floor;
 	void	*wall;
 	void	*coin;
+	void	*exit;
+	char	**map;
 	int		map_num_cols;
 	int		map_num_rows;
 	int		x_pos;
@@ -47,5 +52,6 @@ enum		e_eventcode
 int			handle_keypress(int keycode, t_game *game);
 void		put_img(int x, int y, t_game *game, void *img);
 int			close_game(t_game *game);
+char		**generate_map(char *path);
 
 #endif
