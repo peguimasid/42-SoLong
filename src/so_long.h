@@ -6,7 +6,7 @@
 /*   By: gmasid <gmasid@student.42.rio>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/13 17:13:18 by gmasid            #+#    #+#             */
-/*   Updated: 2022/08/13 17:38:57 by gmasid           ###   ########.fr       */
+/*   Updated: 2022/08/13 19:58:30 by gmasid           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,8 @@
 # include <fcntl.h>
 # include <stdlib.h>
 
-# define PERSON "./img/person_a.xpm"
+# define PERSON_RIGHT "./img/person_d.xpm"
+# define PERSON_LEFT "./img/person_a.xpm"
 # define FLOOR "./img/dirt.xpm"
 # define WALL "./img/wall.xpm"
 # define COIN "./img/coin.xpm"
@@ -71,6 +72,8 @@ int				print_map(t_game *game);
 
 void			put_img(int x, int y, t_game *game, void *img);
 void			put_img(int x, int y, t_game *game, void *img);
+
+void			*load_img(t_game *game, char *path);
 
 char			**generate_map(t_game *game, char *path);
 

@@ -6,7 +6,7 @@
 /*   By: gmasid <gmasid@student.42.rio>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/13 17:40:12 by gmasid            #+#    #+#             */
-/*   Updated: 2022/08/13 17:40:13 by gmasid           ###   ########.fr       */
+/*   Updated: 2022/08/13 19:58:39 by gmasid           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,7 @@ int	init_game(t_game *game)
 	game->mlx = mlx_init();
 	game->win = mlx_new_window(game->mlx, game->map_num_cols,
 			game->map_num_rows, "so_long");
-	game->person = load_img(game, PERSON);
+	game->person = load_img(game, PERSON_RIGHT);
 	game->floor = load_img(game, FLOOR);
 	game->wall = load_img(game, WALL);
 	game->coin = load_img(game, COIN);

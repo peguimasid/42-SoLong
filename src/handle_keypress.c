@@ -6,7 +6,7 @@
 /*   By: gmasid <gmasid@student.42.rio>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/10 14:35:12 by gmasid            #+#    #+#             */
-/*   Updated: 2022/08/13 17:12:53 by gmasid           ###   ########.fr       */
+/*   Updated: 2022/08/13 19:58:35 by gmasid           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,12 +36,16 @@ int	handle_keypress(int keycode, t_game *game)
 	}
 	if (keycode == KEY_LEFT)
 	{
+		mlx_destroy_image(game->mlx, game->person);
+		game->person = load_img(game, PERSON_LEFT);
 		game->map[px][py] = '0';
 		py--;
 		game->map[px][py] = 'P';
 	}
 	if (keycode == KEY_RIGHT)
 	{
+		mlx_destroy_image(game->mlx, game->person);
+		game->person = load_img(game, PERSON_RIGHT);
 		game->map[px][py] = '0';
 		py++;
 		game->map[px][py] = 'P';
