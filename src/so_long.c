@@ -24,6 +24,8 @@ void	put_img(int x, int y, t_game *game, void *img)
 // TODO: Get num of rows and cols dinamically when generating map
 int	init_game(t_game *game)
 {
+	game->mlx = mlx_init();
+	game->win = mlx_new_window(game->mlx, 13 * 32, 5 * 32, "so_long");
 	game->person = load_img(game, PERSON);
 	game->floor = load_img(game, FLOOR);
 	game->wall = load_img(game, WALL);
@@ -79,28 +81,28 @@ int	close_game(t_game *game)
 	return (0);
 }
 
+int	print_usage(void)
+{
+	ft_printf("\033[0;31m\n");
+	ft_printf("Error\nUsage: ./so_long maps/<map>.ber\n");
+	ft_printf("\033[0m");
+	return (1);
+}
+
 int	main(int argc, char **argv)
 {
 	t_game	game;
 
 	if (argc != 2)
-	{
-		ft_printf("\033[0;31m\n");
-		ft_printf("Error\nUsage: ./so_long maps/<map>.ber\n");
-		ft_printf("\033[0m");
-		return (1);
-	}
+		return (print_usage());
 	game.map = generate_map(argv[1]);
 	if (!game.map)
 		return (0);
-	game.mlx = mlx_init();
-	game.win = mlx_new_window(game.mlx, 13 * 32, 5 * 32, "so_long");
-	mlx_hook(game.win, E_KEYPRESS, 1L << 0, handle_keypress, &game);
-	mlx_hook(game.win, E_CLOSE_WINDOW, 1L << 2, close_game, &game);
-	mlx_hook(game.win, 9, 1L << 21, &print_map, &game);
-	mlx_loop_hook(game.mlx, &print_map, &game);
 	init_game(&game);
 	print_map(&game);
+	mlx_hook(game.win, E_KEYPRESS, 1L << 0, handle_keypress, &game);
+	mlx_hook(game.win, E_CLOSE_WINDOW, 1L << 2, close_game, &game);
+	mlx_loop_hook(game.mlx, &print_map, &game);
 	mlx_loop(game.mlx);
 	return (0);
 }
