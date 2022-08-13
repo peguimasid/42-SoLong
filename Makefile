@@ -5,7 +5,8 @@ SRCS	= get_next_line/get_next_line.c	\
 				get_next_line/get_next_line_utils.c	\
 				src/so_long.c \
 				src/handle_keypress.c	\
-				src/generate_map.c
+				src/generate_map.c	\
+				src/print_map.c
 LIBFTPRINTF = ft_printf/libftprintf.a
 
 OBJ	= $(SRCS:.c=.o)
