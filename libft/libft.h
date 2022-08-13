@@ -6,7 +6,7 @@
 /*   By: gmasid <gmasid@student.42.rio>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/28 17:10:23 by gmasid            #+#    #+#             */
-/*   Updated: 2022/05/17 12:07:52 by gmasid           ###   ########.fr       */
+/*   Updated: 2022/06/08 13:46:15 by gmasid           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,6 +59,7 @@ char				*ft_substr(char const *s, unsigned int start, size_t len);
 char				*ft_strjoin(char const *s1, char const *s2);
 char				*ft_strtrim(char const *s1, char const *set);
 char				*ft_itoa(int n);
+char				*ft_utoa(unsigned int n);
 char				*ft_strmapi(char const *s, char (*f)(unsigned int, char));
 
 char				**ft_split(char const *s, char c);

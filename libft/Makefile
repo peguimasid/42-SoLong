@@ -6,7 +6,7 @@
 #    By: gmasid <gmasid@student.42.rio>             +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/04/28 16:23:44 by gmasid            #+#    #+#              #
-#    Updated: 2022/06/04 13:30:23 by gmasid           ###   ########.fr        #
+#    Updated: 2022/06/08 13:46:34 by gmasid           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -40,6 +40,7 @@ SRCS = ft_isalpha.c		\
 		ft_strtrim.c		\
 		ft_split.c		\
 		ft_itoa.c		\
+		ft_utoa.c		\
 		ft_strmapi.c		\
 		ft_striteri.c		\
 		ft_putchar_fd.c	\

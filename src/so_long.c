@@ -90,11 +90,16 @@ int	close_game(t_game *game)
 	return (0);
 }
 
-int	main(void)
+int	main(int argc, char **argv)
 {
 	t_game	game;
 	int		fd;
 
+	if (argc != 2)
+	{
+		ft_printf("Passa o bagulho certo ai %s", argv[0]);
+		return (1);
+	}
 	fd = open("maps/map1.ber", O_RDONLY);
 	printf("%s", get_next_line(fd));
 	game.mlx = mlx_init();
