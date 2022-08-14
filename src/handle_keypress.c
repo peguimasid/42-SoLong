@@ -6,12 +6,39 @@
 /*   By: gmasid <gmasid@student.42.rio>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/10 14:35:12 by gmasid            #+#    #+#             */
-/*   Updated: 2022/08/13 19:58:35 by gmasid           ###   ########.fr       */
+/*   Updated: 2022/08/14 11:12:19 by gmasid           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 #include <stdio.h>
+
+void	map_free(char **map)
+{
+	int	i;
+
+	i = 0;
+	while (map[i])
+	{
+		free(map[i]);
+		i++;
+	}
+	free(map);
+}
+
+int	close_game(t_game *game)
+{
+	mlx_destroy_image(game->mlx, game->wall);
+	mlx_destroy_image(game->mlx, game->floor);
+	mlx_destroy_image(game->mlx, game->exit);
+	mlx_destroy_image(game->mlx, game->coin);
+	mlx_destroy_image(game->mlx, game->person);
+	mlx_destroy_window(game->mlx, game->win);
+	free(game->mlx);
+	map_free(game->map);
+	exit(0);
+	return (0);
+}
 
 int	handle_keypress(int keycode, t_game *game)
 {

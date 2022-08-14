@@ -6,7 +6,8 @@ SRCS	= lib/get_next_line/get_next_line.c	\
 				src/so_long.c \
 				src/handle_keypress.c	\
 				src/generate_map.c	\
-				src/print_map.c
+				src/print_map.c	\
+				src/set_game_config.c
 LIBFTPRINTF = lib/ft_printf/libftprintf.a
 
 OBJ	= $(SRCS:.c=.o)

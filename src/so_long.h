@@ -6,7 +6,7 @@
 /*   By: gmasid <gmasid@student.42.rio>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/13 17:13:18 by gmasid            #+#    #+#             */
-/*   Updated: 2022/08/14 10:59:12 by gmasid           ###   ########.fr       */
+/*   Updated: 2022/08/14 11:07:30 by gmasid           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,11 +66,11 @@ enum			e_eventcode
 	E_CLOSE_WINDOW = 17
 };
 
-int				handle_keypress(int keycode, t_game *game);
-int				close_game(t_game *game);
 int				print_map(t_game *game);
+int				close_game(t_game *game);
+int				set_game_config(t_game *game);
+int				handle_keypress(int keycode, t_game *game);
 
-void			put_img(int x, int y, t_game *game, void *img);
 void			put_img(int x, int y, t_game *game, void *img);
 
 void			*load_img(t_game *game, char *path);
