@@ -6,15 +6,15 @@
 /*   By: gmasid <gmasid@student.42.rio>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/13 17:13:18 by gmasid            #+#    #+#             */
-/*   Updated: 2022/08/13 19:58:30 by gmasid           ###   ########.fr       */
+/*   Updated: 2022/08/14 10:59:12 by gmasid           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef SO_LONG_H
 # define SO_LONG_H
 
-# include "../ft_printf/ft_printf.h"
-# include "../get_next_line/get_next_line.h"
+# include "../lib/ft_printf/ft_printf.h"
+# include "../lib/get_next_line/get_next_line.h"
 # include "../mlx/mlx.h"
 # include <fcntl.h>
 # include <stdlib.h>
