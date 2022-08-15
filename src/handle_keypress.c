@@ -6,7 +6,7 @@
 /*   By: gmasid <gmasid@student.42.rio>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/10 14:35:12 by gmasid            #+#    #+#             */
-/*   Updated: 2022/08/15 12:49:15 by gmasid           ###   ########.fr       */
+/*   Updated: 2022/08/15 15:03:05 by gmasid           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,7 +78,7 @@ int	handle_keypress(int keycode, t_game *game)
 		game->map[px][py] = 'P';
 	}
 	// TODO: Make this happen just when press "ASWD" keys
-	game->moves++;
-	ft_printf("Steps = %d\n", game->moves);
+	game->moves_count++;
+	ft_printf("Steps = %d\n", game->moves_count);
 	return (0);
 }
