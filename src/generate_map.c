@@ -6,13 +6,13 @@
 /*   By: gmasid <gmasid@student.42.rio>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/13 14:26:42 by gmasid            #+#    #+#             */
-/*   Updated: 2022/08/15 15:24:52 by gmasid           ###   ########.fr       */
+/*   Updated: 2022/08/15 19:41:52 by gmasid           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-int	ext_validator(char *path)
+int	is_valid_ext(char *path)
 {
 	int	length;
 
@@ -85,7 +85,7 @@ char	**generate_map(t_game *game, char *path)
 	char	*map;
 	char	**map_array;
 
-	if (!ext_validator(path))
+	if (!is_valid_ext(path))
 		return (NULL);
 	fd = open(path, O_RDONLY);
 	if (fd == -1)
