@@ -6,7 +6,7 @@
 /*   By: gmasid <gmasid@student.42.rio>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/13 17:13:18 by gmasid            #+#    #+#             */
-/*   Updated: 2022/08/15 15:03:17 by gmasid           ###   ########.fr       */
+/*   Updated: 2022/08/15 19:37:25 by gmasid           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,6 +80,8 @@ int				handle_keypress(int keycode, t_game *game);
 
 void			map_free(char **map);
 void			put_img(int x, int y, t_game *game, void *img);
+void			init_vars(t_game *game);
+void			count_map_elements(t_game *game);
 
 void			*load_img(t_game *game, char *path);
 
