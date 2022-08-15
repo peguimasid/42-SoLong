@@ -6,7 +6,7 @@
 /*   By: gmasid <gmasid@student.42.rio>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/14 11:30:31 by gmasid            #+#    #+#             */
-/*   Updated: 2022/08/15 15:11:20 by gmasid           ###   ########.fr       */
+/*   Updated: 2022/08/15 15:39:44 by gmasid           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ void	count_map_elements(t_game *game)
 	}
 }
 
-int	map_respect_num_of_specific_elements(t_game *game)
+int	map_respect_num_of_elements(t_game *game)
 {
 	if (game->players_count != 1 || game->exits_count != 1
 		|| game->collectibles_count < 1)
@@ -80,13 +80,36 @@ int	contains_invalid_char(t_game *game)
 	return (0);
 }
 
+static int	is_rectangle(t_game *game)
+{
+	int	start_row_cols;
+	int	i;
+	int	current_row_cols;
+
+	i = 0;
+	start_row_cols = game->map_num_cols / SPRITE_SIZE;
+	while (i < (game->map_num_rows / SPRITE_SIZE))
+	{
+		current_row_cols = ft_strlen(game->map[i]);
+		if (current_row_cols != start_row_cols)
+		{
+			throw_error("Map should be rectangle");
+			return (0);
+		}
+		i++;
+	}
+	return (1);
+}
+
 int	is_valid_map(t_game *game)
 {
 	init_vars(game);
+	if (!is_rectangle(game))
+		return (0);
 	if (contains_invalid_char(game))
 		return (0);
 	count_map_elements(game);
-	if (!map_respect_num_of_specific_elements(game))
+	if (!map_respect_num_of_elements(game))
 		return (0);
 	return (1);
 }

@@ -6,7 +6,7 @@
 /*   By: gmasid <gmasid@student.42.rio>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/13 14:26:42 by gmasid            #+#    #+#             */
-/*   Updated: 2022/08/13 17:24:14 by gmasid           ###   ########.fr       */
+/*   Updated: 2022/08/15 15:24:52 by gmasid           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,7 +61,7 @@ char	*read_file(int fd)
 	close(fd);
 	if (!*map)
 	{
-		ft_printf("Error\nMap is empty\n");
+		throw_error("Map is empty\n");
 		free(map);
 		return (NULL);
 	}
