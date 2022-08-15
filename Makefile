@@ -4,12 +4,14 @@ CC=cc
 SRCS	= lib/get_next_line/get_next_line.c	\
 				lib/get_next_line/get_next_line_utils.c	\
 				src/so_long.c \
+				src/common.c \
 				src/handle_keypress.c	\
 				src/generate_map.c	\
 				src/print_map.c	\
 				src/set_game_config.c	\
 				src/validate_map.c	\
 				src/validate_map_utils.c
+
 LIBFTPRINTF = lib/ft_printf/libftprintf.a
 
 OBJ	= $(SRCS:.c=.o)

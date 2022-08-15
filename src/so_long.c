@@ -6,20 +6,12 @@
 /*   By: gmasid <gmasid@student.42.rio>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/13 17:40:12 by gmasid            #+#    #+#             */
-/*   Updated: 2022/08/14 12:40:50 by gmasid           ###   ########.fr       */
+/*   Updated: 2022/08/15 19:55:59 by gmasid           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 #include <stdio.h>
-
-int	throw_error(char *error)
-{
-	ft_printf("\033[0;31m\n");
-	ft_printf("Error\n%s\n", error);
-	ft_printf("\033[0m");
-	return (1);
-}
 
 int	main(int argc, char **argv)
 {
