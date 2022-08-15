@@ -6,7 +6,7 @@
 /*   By: gmasid <gmasid@student.42.rio>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/14 11:30:31 by gmasid            #+#    #+#             */
-/*   Updated: 2022/08/15 15:39:44 by gmasid           ###   ########.fr       */
+/*   Updated: 2022/08/15 19:33:39 by gmasid           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -101,15 +101,40 @@ static int	is_rectangle(t_game *game)
 	return (1);
 }
 
+static int	is_surrounded_by_walls(t_game *game)
+{
+	int	i;
+	int	j;
+	int	rows;
+	int	cols;
+
+	i = 0;
+	j = 0;
+	rows = (game->map_num_rows / SPRITE_SIZE) - 1;
+	cols = (game->map_num_cols / SPRITE_SIZE) - 1;
+	while (game->map[i][0] == '1' && game->map[i][cols] == '1' && i < rows)
+		i++;
+	while (game->map[0][j] == '1' && game->map[rows][j] == '1' && j <= cols)
+		j++;
+	if (i != rows || j - 1 != cols)
+	{
+		throw_error("Map must be surrounded by walls");
+		return (0);
+	}
+	return (1);
+}
+
 int	is_valid_map(t_game *game)
 {
 	init_vars(game);
+	count_map_elements(game);
 	if (!is_rectangle(game))
 		return (0);
 	if (contains_invalid_char(game))
 		return (0);
-	count_map_elements(game);
 	if (!map_respect_num_of_elements(game))
+		return (0);
+	if (!is_surrounded_by_walls(game))
 		return (0);
 	return (1);
 }
