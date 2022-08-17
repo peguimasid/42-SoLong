@@ -6,7 +6,7 @@
 /*   By: gmasid <gmasid@student.42.rio>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/15 19:55:41 by gmasid            #+#    #+#             */
-/*   Updated: 2022/08/17 12:43:47 by gmasid           ###   ########.fr       */
+/*   Updated: 2022/08/17 17:58:52 by gmasid           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,12 @@ int	sucess_message(char *msg)
 	ft_printf("%s\n", msg);
 	ft_printf("\033[0m");
 	return (1);
+}
+
+void	print_steps(t_game *game)
+{
+	game->moves_count++;
+	ft_printf("Steps: %d\n", game->moves_count);
 }
 
 int	close_game(t_game *game)
