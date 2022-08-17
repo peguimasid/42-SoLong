@@ -6,7 +6,7 @@
 /*   By: gmasid <gmasid@student.42.rio>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/10 14:35:12 by gmasid            #+#    #+#             */
-/*   Updated: 2022/08/17 17:59:29 by gmasid           ###   ########.fr       */
+/*   Updated: 2022/08/17 18:03:31 by gmasid           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,10 +42,7 @@ void	move_player(t_game *game, int new_x_pos, int new_y_pos)
 		game->map[new_x_pos][new_y_pos] = 'P';
 	print_steps(game);
 	if (game->finish_game)
-	{
-		sucess_message("You win the game!");
-		sucess_message("You can now close the window!");
-	}
+		display_finish_game_message();
 }
 
 void	change_player_image(t_game *game, char *new_image)

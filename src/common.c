@@ -6,7 +6,7 @@
 /*   By: gmasid <gmasid@student.42.rio>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/15 19:55:41 by gmasid            #+#    #+#             */
-/*   Updated: 2022/08/17 17:58:52 by gmasid           ###   ########.fr       */
+/*   Updated: 2022/08/17 18:06:44 by gmasid           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,12 +20,12 @@ int	throw_error(char *error)
 	return (1);
 }
 
-int	sucess_message(char *msg)
+void	display_finish_game_message(void)
 {
 	ft_printf("\033[0;32m\n");
-	ft_printf("%s\n", msg);
+	ft_printf("YOU WIN!!!\n\n");
+	ft_printf("Press ESC or click in X button to close window!\n");
 	ft_printf("\033[0m");
-	return (1);
 }
 
 void	print_steps(t_game *game)
