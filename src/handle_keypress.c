@@ -6,12 +6,18 @@
 /*   By: gmasid <gmasid@student.42.rio>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/10 14:35:12 by gmasid            #+#    #+#             */
-/*   Updated: 2022/08/17 18:03:31 by gmasid           ###   ########.fr       */
+/*   Updated: 2022/08/17 18:12:05 by gmasid           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 #include <stdio.h>
+
+void	change_player_image(t_game *game, char *new_image)
+{
+	mlx_destroy_image(game->mlx, game->person);
+	game->person = load_img(game, new_image);
+}
 
 int	can_move(t_game *game, int x, int y)
 {
@@ -43,12 +49,6 @@ void	move_player(t_game *game, int new_x_pos, int new_y_pos)
 	print_steps(game);
 	if (game->finish_game)
 		display_finish_game_message();
-}
-
-void	change_player_image(t_game *game, char *new_image)
-{
-	mlx_destroy_image(game->mlx, game->person);
-	game->person = load_img(game, new_image);
 }
 
 void	move(int keycode, t_game *game)
