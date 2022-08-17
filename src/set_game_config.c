@@ -6,7 +6,7 @@
 /*   By: gmasid <gmasid@student.42.rio>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/14 11:05:50 by gmasid            #+#    #+#             */
-/*   Updated: 2022/08/14 12:53:17 by gmasid           ###   ########.fr       */
+/*   Updated: 2022/08/17 13:58:40 by gmasid           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,6 @@ void	*load_img(t_game *game, char *path)
 	return (img);
 }
 
-// TODO: Get num of rows and cols dinamically when generating map
 int	set_game_config(t_game *game)
 {
 	game->mlx = mlx_init();
