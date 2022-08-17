@@ -6,7 +6,7 @@
 /*   By: gmasid <gmasid@student.42.rio>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/15 19:35:54 by gmasid            #+#    #+#             */
-/*   Updated: 2022/08/15 19:37:49 by gmasid           ###   ########.fr       */
+/*   Updated: 2022/08/17 12:24:36 by gmasid           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,6 @@
 
 void	init_vars(t_game *game)
 {
-	game->player.coins = 0;
 	game->finish_game = 0;
 	game->collectibles_count = 0;
 	game->players_count = 0;

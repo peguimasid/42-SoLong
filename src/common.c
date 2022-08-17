@@ -6,7 +6,7 @@
 /*   By: gmasid <gmasid@student.42.rio>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/15 19:55:41 by gmasid            #+#    #+#             */
-/*   Updated: 2022/08/15 19:56:43 by gmasid           ###   ########.fr       */
+/*   Updated: 2022/08/17 12:43:47 by gmasid           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,14 @@ int	throw_error(char *error)
 {
 	ft_printf("\033[0;31m\n");
 	ft_printf("Error\n%s\n", error);
+	ft_printf("\033[0m");
+	return (1);
+}
+
+int	sucess_message(char *msg)
+{
+	ft_printf("\033[0;32m\n");
+	ft_printf("%s\n", msg);
 	ft_printf("\033[0m");
 	return (1);
 }

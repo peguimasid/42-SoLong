@@ -6,7 +6,7 @@
 /*   By: gmasid <gmasid@student.42.rio>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/13 17:13:18 by gmasid            #+#    #+#             */
-/*   Updated: 2022/08/15 19:37:25 by gmasid           ###   ########.fr       */
+/*   Updated: 2022/08/17 12:41:01 by gmasid           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,6 @@ typedef struct s_player
 {
 	int			x_pos;
 	int			y_pos;
-	int			coins;
 }				t_player;
 
 typedef struct s_game
@@ -74,6 +73,7 @@ enum			e_eventcode
 int				print_map(t_game *game);
 int				close_game(t_game *game);
 int				throw_error(char *error);
+int				sucess_message(char *msg);
 int				is_valid_map(t_game *game);
 int				set_game_config(t_game *game);
 int				handle_keypress(int keycode, t_game *game);

@@ -6,7 +6,7 @@
 /*   By: gmasid <gmasid@student.42.rio>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/10 14:35:12 by gmasid            #+#    #+#             */
-/*   Updated: 2022/08/17 12:16:12 by gmasid           ###   ########.fr       */
+/*   Updated: 2022/08/17 13:28:38 by gmasid           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,18 +16,24 @@
 void	print_steps(t_game *game)
 {
 	game->moves_count++;
-	printf("Steps: %d\n", game->moves_count);
+	ft_printf("Steps: %d\n", game->moves_count);
+}
+
+int	collect_all_coins(t_game *game)
+{
+	return (game->collectibles_count == 0);
 }
 
 int	can_move(t_game *game, int x, int y)
 {
-	int	collect_all_coins;
-
-	collect_all_coins = game->player.coins == game->collectibles_count;
 	if (game->map[x][y] == '1')
 		return (0);
-	if (game->map[x][y] == 'E' && !collect_all_coins)
+	if (game->map[x][y] == 'E' && !collect_all_coins(game))
 		return (0);
+	if (game->map[x][y] == 'C')
+		game->collectibles_count--;
+	if (game->map[x][y] == 'E' && collect_all_coins(game))
+		game->finish_game = 1;
 	return (1);
 }
 
@@ -38,6 +44,8 @@ void	move(int keycode, t_game *game)
 
 	px = game->player.x_pos;
 	py = game->player.y_pos;
+	if (game->finish_game)
+		return ;
 	if (keycode == KEY_UP)
 	{
 		if (!can_move(game, px - 1, py))
