@@ -6,7 +6,7 @@
 /*   By: gmasid <gmasid@student.42.rio>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/14 11:05:50 by gmasid            #+#    #+#             */
-/*   Updated: 2022/08/17 13:58:40 by gmasid           ###   ########.fr       */
+/*   Updated: 2022/08/18 11:28:55 by gmasid           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ void	*load_img(t_game *game, char *path)
 	img = mlx_xpm_file_to_image(game->mlx, path, &x, &y);
 	if (img == NULL)
 	{
-		ft_printf("Error\nImage not found\n");
+		throw_error("Image not found");
 		exit(1);
 	}
 	return (img);
