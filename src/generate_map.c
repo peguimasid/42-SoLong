@@ -6,7 +6,7 @@
 /*   By: gmasid <gmasid@student.42.rio>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/13 14:26:42 by gmasid            #+#    #+#             */
-/*   Updated: 2022/08/15 19:41:52 by gmasid           ###   ########.fr       */
+/*   Updated: 2022/08/22 11:38:12 by gmasid           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ int	is_valid_ext(char *path)
 	length = ft_strlen(path);
 	if (ft_strncmp(path + length - 4, ".ber", 4) != 0)
 	{
-		ft_printf("Error\nInvalid file extension\n");
+		throw_error("Invalid file extension");
 		return (0);
 	}
 	return (1);
@@ -33,10 +33,7 @@ int	has_sequence_newline(char *str)
 	while (str[i])
 	{
 		if (str[i] == '\n' && str[i + 1] == '\n')
-		{
-			ft_printf("Error\nMap format is wrong\n");
-			return (1);
-		}
+			return (throw_error("Map format is wrong"));
 		i++;
 	}
 	return (0);
@@ -61,7 +58,7 @@ char	*read_file(int fd)
 	close(fd);
 	if (!*map)
 	{
-		throw_error("Map is empty\n");
+		throw_error("Map is empty");
 		free(map);
 		return (NULL);
 	}
@@ -90,7 +87,7 @@ char	**generate_map(t_game *game, char *path)
 	fd = open(path, O_RDONLY);
 	if (fd == -1)
 	{
-		ft_printf("Error\nFile not found\n");
+		throw_error("File not found");
 		return (NULL);
 	}
 	map = read_file(fd);
