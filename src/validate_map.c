@@ -6,7 +6,7 @@
 /*   By: gmasid <gmasid@student.42.rio>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/14 11:30:31 by gmasid            #+#    #+#             */
-/*   Updated: 2022/08/15 19:37:04 by gmasid           ###   ########.fr       */
+/*   Updated: 2022/08/23 12:45:38 by gmasid           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,12 +34,8 @@ int	contains_invalid_char(t_game *game)
 		j = 0;
 		while (game->map[i][j])
 		{
-			if (game->map[i][j] != 'C' && game->map[i][j] != 'E'
-				&& game->map[i][j] != 'P' && game->map[i][j] != '0'
-				&& game->map[i][j] != '1')
-			{
+			if (!ft_strchr("PEC01", game->map[i][j]))
 				return (throw_error("Invalid character found"));
-			}
 			j++;
 		}
 		i++;
