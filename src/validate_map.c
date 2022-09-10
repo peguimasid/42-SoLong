@@ -6,11 +6,11 @@
 /*   By: gmasid <gmasid@student.42.rio>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/14 11:30:31 by gmasid            #+#    #+#             */
-/*   Updated: 2022/09/10 20:26:13 by gmasid           ###   ########.fr       */
+/*   Updated: 2022/09/10 20:29:57 by gmasid           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "so_long.h"
+#include "../includes/so_long.h"
 
 int	contains_invalid_char(t_game *game)
 {

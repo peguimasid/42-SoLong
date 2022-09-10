@@ -6,11 +6,11 @@
 /*   By: gmasid <gmasid@student.42.rio>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/13 17:34:49 by gmasid            #+#    #+#             */
-/*   Updated: 2022/08/13 17:34:59 by gmasid           ###   ########.fr       */
+/*   Updated: 2022/09/10 20:29:41 by gmasid           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "so_long.h"
+#include "../includes/so_long.h"
 
 void	put_img(int x, int y, t_game *game, void *img)
 {

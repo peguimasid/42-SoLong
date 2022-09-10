@@ -6,11 +6,11 @@
 /*   By: gmasid <gmasid@student.42.rio>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/13 14:26:42 by gmasid            #+#    #+#             */
-/*   Updated: 2022/09/10 19:50:20 by gmasid           ###   ########.fr       */
+/*   Updated: 2022/09/10 20:29:03 by gmasid           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "so_long.h"
+#include "../includes/so_long.h"
 
 int	is_valid_ext(char *path)
 {

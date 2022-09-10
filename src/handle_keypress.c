@@ -6,12 +6,11 @@
 /*   By: gmasid <gmasid@student.42.rio>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/10 14:35:12 by gmasid            #+#    #+#             */
-/*   Updated: 2022/08/17 18:12:05 by gmasid           ###   ########.fr       */
+/*   Updated: 2022/09/10 20:29:26 by gmasid           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "so_long.h"
-#include <stdio.h>
+#include "../includes/so_long.h"
 
 void	change_player_image(t_game *game, char *new_image)
 {
