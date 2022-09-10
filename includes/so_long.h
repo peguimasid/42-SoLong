@@ -6,7 +6,7 @@
 /*   By: gmasid <gmasid@student.42.rio>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/13 17:13:18 by gmasid            #+#    #+#             */
-/*   Updated: 2022/09/10 20:26:08 by gmasid           ###   ########.fr       */
+/*   Updated: 2022/09/10 20:34:05 by gmasid           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,8 +50,6 @@ typedef struct s_game
 	int			moves_count;
 	int			collectibles_count;
 	int			players_count;
-	int			player_x_pos;
-	int			player_y_pos;
 	int			exits_count;
 	int			finish_game;
 	int			map_num_cols;

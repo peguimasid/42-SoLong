@@ -6,7 +6,7 @@
 /*   By: gmasid <gmasid@student.42.rio>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/15 19:35:54 by gmasid            #+#    #+#             */
-/*   Updated: 2022/09/10 20:29:53 by gmasid           ###   ########.fr       */
+/*   Updated: 2022/09/10 20:34:11 by gmasid           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,8 +38,8 @@ void	count_map_elements(t_game *game)
 				game->exits_count++;
 			if (game->map[i][j] == 'P')
 			{
-				game->player_x_pos = i;
-				game->player_y_pos = j;
+				game->player.x_pos = i;
+				game->player.y_pos = j;
 				game->players_count++;
 			}
 			j++;
