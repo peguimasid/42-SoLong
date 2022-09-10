@@ -6,7 +6,7 @@
 /*   By: gmasid <gmasid@student.42.rio>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/14 11:30:31 by gmasid            #+#    #+#             */
-/*   Updated: 2022/09/10 20:34:25 by gmasid           ###   ########.fr       */
+/*   Updated: 2022/09/10 20:40:23 by gmasid           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -107,6 +107,9 @@ int	is_valid_map(t_game *game)
 	if (!is_surrounded_by_walls(game))
 		return (0);
 	if (!has_valid_path(game, game->player.x_pos, game->player.y_pos))
+	{
+		throw_error("Map must contain a valid path");
 		return (0);
+	}
 	return (1);
 }
