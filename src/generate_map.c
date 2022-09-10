@@ -6,7 +6,7 @@
 /*   By: gmasid <gmasid@student.42.rio>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/13 14:26:42 by gmasid            #+#    #+#             */
-/*   Updated: 2022/08/22 11:38:12 by gmasid           ###   ########.fr       */
+/*   Updated: 2022/09/10 19:50:20 by gmasid           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,6 +81,7 @@ char	**generate_map(t_game *game, char *path)
 	int		fd;
 	char	*map;
 	char	**map_array;
+	char	**map_array_copy;
 
 	if (!is_valid_ext(path))
 		return (NULL);
@@ -99,8 +100,10 @@ char	**generate_map(t_game *game, char *path)
 		return (NULL);
 	}
 	map_array = ft_split(map, '\n');
+	map_array_copy = ft_split(map, '\n');
 	free(map);
 	game->map = map_array;
+	game->map_copy = map_array_copy;
 	set_map_boundaries(game);
 	return (map_array);
 }

@@ -6,22 +6,11 @@
 /*   By: gmasid <gmasid@student.42.rio>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/14 11:30:31 by gmasid            #+#    #+#             */
-/*   Updated: 2022/08/23 12:45:38 by gmasid           ###   ########.fr       */
+/*   Updated: 2022/09/10 20:26:13 by gmasid           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
-
-int	map_respect_num_of_elements(t_game *game)
-{
-	if (game->players_count != 1 || game->exits_count != 1
-		|| game->collectibles_count < 1)
-	{
-		throw_error("Exactly one exit and player and at least one coin");
-		return (0);
-	}
-	return (1);
-}
 
 int	contains_invalid_char(t_game *game)
 {
@@ -87,6 +76,24 @@ static int	is_surrounded_by_walls(t_game *game)
 	return (1);
 }
 
+int	has_valid_path(t_game *game, int i, int j)
+{
+	if (game->map_copy[i][j] == '1')
+		return (0);
+	if (game->map_copy[i][j] == 'E')
+		return (1);
+	game->map_copy[i][j] = '1';
+	if (has_valid_path(game, i + 1, j))
+		return (1);
+	if (has_valid_path(game, i - 1, j))
+		return (1);
+	if (has_valid_path(game, i, j + 1))
+		return (1);
+	if (has_valid_path(game, i, j - 1))
+		return (1);
+	return (0);
+}
+
 int	is_valid_map(t_game *game)
 {
 	init_vars(game);
@@ -98,6 +105,8 @@ int	is_valid_map(t_game *game)
 	if (!map_respect_num_of_elements(game))
 		return (0);
 	if (!is_surrounded_by_walls(game))
+		return (0);
+	if (!has_valid_path(game, game->player_x_pos, game->player_y_pos))
 		return (0);
 	return (1);
 }
