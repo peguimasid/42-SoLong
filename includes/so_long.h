@@ -6,7 +6,7 @@
 /*   By: gmasid <gmasid@student.42.rio>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/13 17:13:18 by gmasid            #+#    #+#             */
-/*   Updated: 2022/09/10 20:34:05 by gmasid           ###   ########.fr       */
+/*   Updated: 2022/09/10 21:04:41 by gmasid           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,6 +91,7 @@ void			put_img(int x, int y, t_game *game, void *img);
 
 void			*load_img(t_game *game, char *path);
 
+int				is_valid_ext(char *path);
 char			**generate_map(t_game *game, char *path);
 
 #endif

@@ -6,24 +6,11 @@
 /*   By: gmasid <gmasid@student.42.rio>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/13 14:26:42 by gmasid            #+#    #+#             */
-/*   Updated: 2022/09/10 20:29:03 by gmasid           ###   ########.fr       */
+/*   Updated: 2022/09/10 21:05:17 by gmasid           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/so_long.h"
-
-int	is_valid_ext(char *path)
-{
-	int	length;
-
-	length = ft_strlen(path);
-	if (ft_strncmp(path + length - 4, ".ber", 4) != 0)
-	{
-		throw_error("Invalid file extension");
-		return (0);
-	}
-	return (1);
-}
 
 int	has_sequence_newline(char *str)
 {
@@ -76,12 +63,23 @@ void	set_map_boundaries(t_game *game)
 	game->map_num_cols = (ft_strlen(game->map[0])) * SPRITE_SIZE;
 }
 
+char	**fill_map(t_game *game, char *map)
+{
+	char	**map_array;
+	char	**map_array_copy;
+
+	map_array = ft_split(map, '\n');
+	map_array_copy = ft_split(map, '\n');
+	game->map = map_array;
+	game->map_copy = map_array_copy;
+	return (map_array);
+}
+
 char	**generate_map(t_game *game, char *path)
 {
 	int		fd;
 	char	*map;
 	char	**map_array;
-	char	**map_array_copy;
 
 	if (!is_valid_ext(path))
 		return (NULL);
@@ -99,11 +97,8 @@ char	**generate_map(t_game *game, char *path)
 		free(map);
 		return (NULL);
 	}
-	map_array = ft_split(map, '\n');
-	map_array_copy = ft_split(map, '\n');
+	map_array = fill_map(game, map);
 	free(map);
-	game->map = map_array;
-	game->map_copy = map_array_copy;
 	set_map_boundaries(game);
 	return (map_array);
 }
