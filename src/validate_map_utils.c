@@ -6,11 +6,11 @@
 /*   By: gmasid <gmasid@student.42.rio>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/15 19:35:54 by gmasid            #+#    #+#             */
-/*   Updated: 2022/08/17 12:24:36 by gmasid           ###   ########.fr       */
+/*   Updated: 2022/09/10 20:34:11 by gmasid           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "so_long.h"
+#include "../includes/so_long.h"
 
 void	init_vars(t_game *game)
 {
@@ -37,9 +37,24 @@ void	count_map_elements(t_game *game)
 			if (game->map[i][j] == 'E')
 				game->exits_count++;
 			if (game->map[i][j] == 'P')
+			{
+				game->player.x_pos = i;
+				game->player.y_pos = j;
 				game->players_count++;
+			}
 			j++;
 		}
 		i++;
 	}
+}
+
+int	map_respect_num_of_elements(t_game *game)
+{
+	if (game->players_count != 1 || game->exits_count != 1
+		|| game->collectibles_count < 1)
+	{
+		throw_error("Exactly one exit and player and at least one coin");
+		return (0);
+	}
+	return (1);
 }

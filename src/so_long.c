@@ -6,12 +6,11 @@
 /*   By: gmasid <gmasid@student.42.rio>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/13 17:40:12 by gmasid            #+#    #+#             */
-/*   Updated: 2022/08/15 19:55:59 by gmasid           ###   ########.fr       */
+/*   Updated: 2022/09/10 20:29:50 by gmasid           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "so_long.h"
-#include <stdio.h>
+#include "../includes/so_long.h"
 
 int	main(int argc, char **argv)
 {

@@ -7,6 +7,7 @@ SRCS	= lib/get_next_line/get_next_line.c	\
 				src/common.c \
 				src/handle_keypress.c	\
 				src/generate_map.c	\
+				src/generate_map_utils.c	\
 				src/print_map.c	\
 				src/set_game_config.c	\
 				src/validate_map.c	\

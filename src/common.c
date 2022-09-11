@@ -6,11 +6,11 @@
 /*   By: gmasid <gmasid@student.42.rio>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/15 19:55:41 by gmasid            #+#    #+#             */
-/*   Updated: 2022/08/17 18:06:44 by gmasid           ###   ########.fr       */
+/*   Updated: 2022/09/10 20:28:54 by gmasid           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "so_long.h"
+#include "../includes/so_long.h"
 
 int	throw_error(char *error)
 {
@@ -44,6 +44,7 @@ int	close_game(t_game *game)
 	mlx_destroy_window(game->mlx, game->win);
 	free(game->mlx);
 	map_free(game->map);
+	map_free(game->map_copy);
 	exit(0);
 	return (0);
 }

@@ -6,7 +6,7 @@
 /*   By: gmasid <gmasid@student.42.rio>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/13 17:13:18 by gmasid            #+#    #+#             */
-/*   Updated: 2022/08/17 18:03:24 by gmasid           ###   ########.fr       */
+/*   Updated: 2022/09/10 21:04:41 by gmasid           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,6 +46,7 @@ typedef struct s_game
 	void		*coin;
 	void		*exit;
 	char		**map;
+	char		**map_copy;
 	int			moves_count;
 	int			collectibles_count;
 	int			players_count;
@@ -79,6 +80,8 @@ int				is_valid_map(t_game *game);
 int				set_game_config(t_game *game);
 int				handle_keypress(int keycode, t_game *game);
 
+int				map_respect_num_of_elements(t_game *game);
+
 void			map_free(char **map);
 void			init_vars(t_game *game);
 void			print_steps(t_game *game);
@@ -88,6 +91,7 @@ void			put_img(int x, int y, t_game *game, void *img);
 
 void			*load_img(t_game *game, char *path);
 
+int				is_valid_ext(char *path);
 char			**generate_map(t_game *game, char *path);
 
 #endif
