@@ -6,7 +6,7 @@
 /*   By: gmasid <gmasid@student.42.rio>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/14 11:30:31 by gmasid            #+#    #+#             */
-/*   Updated: 2022/09/10 20:40:23 by gmasid           ###   ########.fr       */
+/*   Updated: 2022/09/11 10:25:22 by gmasid           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,22 +76,20 @@ static int	is_surrounded_by_walls(t_game *game)
 	return (1);
 }
 
-int	has_valid_path(t_game *game, int i, int j)
+int	has_valid_path(t_game *game, int px, int py)
 {
-	if (game->map_copy[i][j] == '1')
+	count_map_reachable_elements(game, px, py);
+	if (game->collectibles_count != game->reachable_collectibles_count)
+	{
+		throw_error("Map must contain a valid path");
 		return (0);
-	if (game->map_copy[i][j] == 'E')
-		return (1);
-	game->map_copy[i][j] = '1';
-	if (has_valid_path(game, i + 1, j))
-		return (1);
-	if (has_valid_path(game, i - 1, j))
-		return (1);
-	if (has_valid_path(game, i, j + 1))
-		return (1);
-	if (has_valid_path(game, i, j - 1))
-		return (1);
-	return (0);
+	}
+	if (game->exits_count != game->reachable_exits_count)
+	{
+		throw_error("Map must contain a valid path");
+		return (0);
+	}
+	return (1);
 }
 
 int	is_valid_map(t_game *game)
@@ -107,9 +105,6 @@ int	is_valid_map(t_game *game)
 	if (!is_surrounded_by_walls(game))
 		return (0);
 	if (!has_valid_path(game, game->player.x_pos, game->player.y_pos))
-	{
-		throw_error("Map must contain a valid path");
 		return (0);
-	}
 	return (1);
 }

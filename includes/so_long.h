@@ -6,7 +6,7 @@
 /*   By: gmasid <gmasid@student.42.rio>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/13 17:13:18 by gmasid            #+#    #+#             */
-/*   Updated: 2022/09/10 21:04:41 by gmasid           ###   ########.fr       */
+/*   Updated: 2022/09/11 10:25:19 by gmasid           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,8 +49,10 @@ typedef struct s_game
 	char		**map_copy;
 	int			moves_count;
 	int			collectibles_count;
+	int			reachable_collectibles_count;
 	int			players_count;
 	int			exits_count;
+	int			reachable_exits_count;
 	int			finish_game;
 	int			map_num_cols;
 	int			map_num_rows;
@@ -86,6 +88,7 @@ void			map_free(char **map);
 void			init_vars(t_game *game);
 void			print_steps(t_game *game);
 void			count_map_elements(t_game *game);
+void			count_map_reachable_elements(t_game *game, int px, int py);
 void			display_finish_game_message(void);
 void			put_img(int x, int y, t_game *game, void *img);
 
